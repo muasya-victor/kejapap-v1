@@ -27,7 +27,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `feedback`
 --
 
-CREATE TABLE `feedback` (
+USE joyland;
+
+CREATE TABLE IF NOT EXISTS `feedback` (
   `id` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
@@ -53,7 +55,7 @@ INSERT INTO `feedback` (`id`, `fname`, `lname`, `email`, `phone`, `message`) VAL
 -- Table structure for table `landlord`
 --
 
-CREATE TABLE `landlord` (
+CREATE TABLE IF NOT EXISTS `landlord` (
   `id` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
@@ -98,7 +100,7 @@ INSERT INTO `landlord` (`id`, `fname`, `lname`, `email`, `properties`) VALUES
 -- Table structure for table `property`
 --
 
-CREATE TABLE `property` (
+CREATE TABLE IF NOT EXISTS `property` (
   `id` int(11) NOT NULL,
   `house_type` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
@@ -126,7 +128,7 @@ INSERT INTO `property` (`id`, `house_type`, `price`, `location`, `avatar`, `rent
 -- Table structure for table `tenants`
 --
 
-CREATE TABLE `tenants` (
+CREATE TABLE IF NOT EXISTS `tenants` (
   `id` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
@@ -189,7 +191,7 @@ INSERT INTO `tenants` (`id`, `fname`, `lname`, `email`) VALUES
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
