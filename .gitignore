@@ -1,0 +1,9 @@
+# .gitignore
+
+vendor/
+.env
+*.log
+.idea/
+.vscode/
+composer.lock
+composer.phar

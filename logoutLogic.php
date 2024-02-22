@@ -4,7 +4,6 @@ if(isset($_POST['submit'])){
     setcookie('username', '', time() - 3600, "/");
 
     // Redirect the user to the login page after logout
-    header("Location: http://localhost/joyland/login.php");
+    header("Location: login");
     exit();
 }
-?>

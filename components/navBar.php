@@ -32,14 +32,14 @@
             </span>
 
 
-            <button onclick="openNewPage('http://localhost/joyland/index.php')"
-                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold cursor-pointer">Home</button>
-            <button onclick="openNewPage('http://localhost/joyland/about.php')"
-                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold cursor-pointer">About</button>
+            <a href="/"
+                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold cursor-pointer">Home</a>
+            <a href="about"
+                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold cursor-pointer">About</a>
 
-            <button onclick="openNewPage('http://localhost/joyland/contact.php')"
+            <a href="contact"
                     class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
-                    cursor-pointer">Feed Back</button>
+                    cursor-pointer">Feed Back</a>
 
             <?php
 
@@ -52,9 +52,9 @@
                         class="p-1 rounded-lg
                             focus-none outline-none bg-white font-semibold text-gray-700 hover:text-[#3E2093]">
                             <option value="">Admin</option>
-                            <option value="http://localhost/joyland/landlords.php">Landlords</option>
-                            <option value="http://localhost/joyland/tenants.php">Tenants</option>
-                            <option value="http://localhost/joyland/properties.php">Properties</option>
+                            <option value="landlords.php">Landlords</option>
+                            <option value="tenants.php">Tenants</option>
+                            <option value="properties.php">Properties</option>
                         </select>
                     ';
                 } else {
@@ -102,12 +102,12 @@
                         ';
                 } else {
                     echo '
-                        <button onclick="openNewPage(`http://localhost/joyland/login.php`)"
+                        <a href="login.php"
                         class=" border px-4 py-2 h-fit rounded-md
                          bg-violet-800 text-white hover:bg-violet-900
                          flex items-center gap-1 font-semibold ">
                             <span>Sign In</span>
-                        </button>
+                        </a>
                         ';
 
 //                    echo $_SESSION['username'];
