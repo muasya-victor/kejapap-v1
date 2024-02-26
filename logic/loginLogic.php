@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
         </script>
         ";
 
-        header("Location: http://localhost/joyland/index.php");
+        header("Location: http://localhost/kejapap-v1/index.php");
 
     }
     else{
