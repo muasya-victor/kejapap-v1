@@ -22,7 +22,8 @@
 
     <div class="w-full md:w-6/12 mx-auto">
         <?php
-            require "logic/components/propertyForm.php"
+//            require "logic/components/propertyForm.php"
+            require "logic/registerProperty.php"
         ?>
     </div>
 </div>

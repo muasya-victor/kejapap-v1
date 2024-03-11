@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form method="post" action="#"
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"
       class="p-4 flex flex-col items-start justify-center gap-4 w-full rounded-lg bg-white">
 
     <h3 class="text-lg font-bold">Property Addition</h3>
@@ -43,7 +43,7 @@
         <div class="flex flex-col gap-1 w-[90%]">
             <label for="avatar">Avatar</label>
 
-            <input type="file" name="avatar" class="border-b-2 p-2
+            <input type="file" name="avatar" id=avatar" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>

@@ -50,8 +50,11 @@ require "app/database.php";
                     $avatar = $row['avatar'];
                     $property_id = 2;
 
+//                    echo "' $avatar . '";
+//                    echo '/projectMedia/65ef477ca039e_paper.jpeg';
+
                     echo '<div class="flex flex-col gap-2 rounded-lg border border-gray-300 w-[270px]">
-                                <img src="projectMedia/' . $avatar . '" class="rounded-t-lg h-[150px]">
+                                <img src="' . $avatar . '" class="rounded-t-lg h-[150px]">
                                 <div class="flex flex-col gap-2 p-2">
                                     <h3 class="text-lg font-bold">KES ' . $price . '</h3>
                                     <p class="text-gray-600 font-semibold text-sm">
