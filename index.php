@@ -48,10 +48,7 @@ require "app/database.php";
                     $price = $row['price'];
                     $location = $row['location'];
                     $avatar = $row['avatar'];
-                    $property_id = 2;
-
-//                    echo "' $avatar . '";
-//                    echo '/projectMedia/65ef477ca039e_paper.jpeg';
+                    $property_id = $row['id'];
 
                     echo '<div class="flex flex-col gap-2 rounded-lg border border-gray-300 w-[270px]">
                                 <img src="' . $avatar . '" class="rounded-t-lg h-[150px]">
@@ -93,6 +90,10 @@ require "app/database.php";
                         // Update the UI or handle response as needed
                         button.disabled = true;
                         button.textContent = 'Rented';
+
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
                     } else {
                         console.error('Request failed:', xhr.status, xhr.statusText);
                     }
