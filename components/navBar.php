@@ -18,7 +18,7 @@
             <span class="flex gap-1 items-center mr-8">
                 <p class="font-bold text-xl text-[#3E2093]
                  hidden md:flex flex-col ">
-                    <span>KejaPap</span>
+                    <span>St Paul's Rental</span>
                     <span class="w-12 h-2 border-b-4 border-[#3E2093]">
 
                     </span>
