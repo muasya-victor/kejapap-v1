@@ -34,10 +34,10 @@
 
             <a href="/"
                     class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold cursor-pointer">Home</a>
-            <a href="about"
+            <a href="about.php"
                     class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold cursor-pointer">About</a>
 
-            <a href="contact"
+            <a href="contact.php"
                     class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
                     cursor-pointer">Feed Back</a>
 
@@ -51,7 +51,7 @@
                         id="selectLocation"
                         class="p-1 rounded-lg
                             focus-none outline-none bg-white font-semibold text-gray-700 hover:text-[#3E2093]">
-                            <option value="">Admin</option>
+                            <option value="">Dashboard</option>
                             <option value="landlords.php">Landlords</option>
                             <option value="tenants.php">Tenants</option>
                             <option value="properties.php">Properties</option>

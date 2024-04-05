@@ -20,13 +20,13 @@
 
 <div class="mt-32 flex flex-col gap-4 w-full">
 
-    <div class="w-full md:w-6/12 mx-auto">
+    <div class="w-full md:w-9/12 mx-auto">
         <?php
             require "logic/components/landlordForm.php"
         ?>
     </div>
 
-    <div class="w-full md:w-6/12 mx-auto">
+    <div class="w-full md:w-9/12 mx-auto">
         <?php
         if(isset($_COOKIE['username'])) {
             if ($_COOKIE['username'] == 'admin'){
