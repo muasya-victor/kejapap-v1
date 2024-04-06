@@ -31,7 +31,7 @@ require "app/database.php";
             <?php
             $connection = $GLOBALS['connection'];
 
-            $query = "SELECT * FROM property where rented = '0'";
+            $query = "SELECT * FROM property where property_rented = '0'";
             $search_query = mysqli_query($connection, $query);
 
             if (!$search_query) {
@@ -45,9 +45,9 @@ require "app/database.php";
             } else {
 
                 while ($row = mysqli_fetch_array($search_query)) {
-                    $price = $row['price'];
-                    $location = $row['location'];
-                    $avatar = $row['avatar'];
+                    $price = $row['property_price'];
+                    $location = $row['property_location'];
+                    $avatar = $row['property_avatar'];
                     $property_id = 2;
 
                     echo '<div class="flex flex-col gap-2 rounded-lg border border-gray-300 w-[270px]">

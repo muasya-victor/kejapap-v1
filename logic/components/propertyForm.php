@@ -23,8 +23,8 @@
 
     <div class="grid md:grid-cols-1 gap-4 w-full  ">
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="house_type">House Type</label>
-            <select name="house_type" id="house_type" class="border-b-2 p-2
+            <label for="property_house_type">House Type</label>
+            <select name="property_house_type" id="house_type" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400">
                 <option value="">Select An Option</option>
@@ -35,22 +35,22 @@
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="price">Price In KSH</label>
-            <input type="number" name="price" class="border-b-2 p-2
+            <label for="propoerty_price">Price In KSH</label>
+            <input type="number" name="property_house_type" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="avatar">Avatar</label>
+            <label for="property_avatar">Avatar</label>
 
-            <input type="file" name="avatar" class="border-b-2 p-2
+            <input type="file" name="property_avatar" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="mail">Location Description</label>
-            <textarea name="location" class="border-b-2 py-2
+            <label for="propety_location">Location Description</label>
+            <textarea name="propety_location" class="border-b-2 py-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
 

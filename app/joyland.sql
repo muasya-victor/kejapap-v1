@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 USE joyland;
 
 CREATE TABLE IF NOT EXISTS `feedback` (
-  `feedback_id` int(11) NOT NULL,
+  `feedback_id` int(11) NOT NULL DEFAULT 1,
   `feedback_first_name` varchar(50) NOT NULL,
   `feedback_last_name` varchar(50) NOT NULL,
   `feedback_email` varchar(50) NOT NULL,
