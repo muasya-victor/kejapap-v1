@@ -66,7 +66,7 @@
                    class="my-2 h-10 w-fit px-10 bg-[#3E2093] text-white  rounded-2xl"
                    value="Submit">
 
-            <div class="flex flex-wrap gap-2 hidden ">
+            <div class="flex flex-wrap gap-2 hidden">
                 <p class="">Don't Have an account ? Register as</p>
                 <button type="button"
                         onclick="openNewPage('http://localhost/joyland/tenants.php')"
