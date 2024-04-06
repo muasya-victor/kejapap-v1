@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contact joyland</title>
+    <title>contact us</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,37 +115,37 @@
 
             <div class="grid md:grid-cols-2 gap-4 w-full">
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="contact_first_name">First Name</label>
-                    <input type="text" name="contact_first_name" class="border-b-2 p-2
+                    <label for="feedback_first_name">First Name</label>
+                    <input type="text" name="feedback_first_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
 
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="contact_last_name">Last Name</label>
-                    <input type="text" name="contact_last_name" class="border-b-2 p-2
+                    <label for="feedback_last_name">Last Name</label>
+                    <input type="text" name="feedback_last_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
 
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="mail">Mail</label>
-                    <input type="email" name="email" class="border-b-2 p-2
+                    <label for="feedback_mail">Mail</label>
+                    <input type="feedback_email" name="email" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
 
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="contact_phone">Phone</label>
-                    <input type="text" name="contact_phone" class="border-b-2 p-2
+                    <label for="feedback_phone">Phone</label>
+                    <input type="text" name="feedback_phone" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
             </div>
 
             <div class="flex flex-col gap-1 w-full">
-                <label for="contact_message">Message</label>
-                <textarea name="contact_message" class="border-b-2 p-2
+                <label for="feedback_message">Message</label>
+                <textarea name="feedback_message" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" ></textarea>
             </div>
