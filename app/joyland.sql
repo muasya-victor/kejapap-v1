@@ -30,19 +30,19 @@ SET time_zone = "+00:00";
 USE joyland;
 
 CREATE TABLE IF NOT EXISTS `feedback` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `message` varchar(255) NOT NULL
+  `feedback_id` int(11) NOT NULL,
+  `feedback_first_name` varchar(50) NOT NULL,
+  `feedback_last_name` varchar(50) NOT NULL,
+  `feedback_email` varchar(50) NOT NULL,
+  `feedback_phone` varchar(50) NOT NULL,
+  `feedback_message` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `fname`, `lname`, `email`, `phone`, `message`) VALUES
+INSERT INTO `feedback` (`feedback_id`, `feedback_first_name`, `feedback_last_name`, `feedback_email`, `feedback_phone`, `feedback_message`) VALUES
 (1, 'Victor', 'Muasya', 'vicmwe184@gmail.com', '0795083960', 'test message'),
 (2, 'Victor', 'Muasya', 'vicmwe184@gmail.com', '0795083960', 'test message'),
 (3, 'Victor', 'Muasya', 'vicmwe184@gmail.com', '0795083960', 'test message'),
@@ -81,19 +81,19 @@ INSERT INTO `landlord` (`id`, `fname`, `lname`, `email`, `properties`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `property` (
-  `id` int(11) NOT NULL,
-  `house_type` varchar(50) NOT NULL,
-  `price` int(11) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `avatar` varchar(200) NOT NULL,
-  `rented` tinyint(1) NOT NULL DEFAULT 0
+  `property_id` int(11) NOT NULL,
+  `property_house_type` varchar(50) NOT NULL,
+  `property_price` int(11) NOT NULL,
+  `property_location` varchar(255) NOT NULL,
+  `property_avatar` varchar(200) NOT NULL,
+  `property_rented` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`id`, `house_type`, `price`, `location`, `avatar`, `rented`) VALUES
+INSERT INTO `property` (`property_id`, `property_house_type`, `property_price`, `property_location`, `property_avatar`, `property_rented`) VALUES
 (37, 'single_room', 1500, 'Behind St Pauls Opposite Jumuia', 'rental1.jpg', 0),
 (38, 'single_room', 5000, 'Sample Location 3', 'rental1.jpg', 0),
 (39, 'single_room', 6000, 'Next to Marieta centre', 'rental3.jpg', 0),
@@ -215,7 +215,7 @@ ALTER TABLE `landlord`
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tenants`

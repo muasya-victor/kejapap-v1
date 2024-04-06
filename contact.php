@@ -115,15 +115,15 @@
 
             <div class="grid md:grid-cols-2 gap-4 w-full">
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="fname">First Name</label>
-                    <input type="text" name="fname" class="border-b-2 p-2
+                    <label for="contact_first_name">First Name</label>
+                    <input type="text" name="contact_first_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
 
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="lname">Last Name</label>
-                    <input type="text" name="lname" class="border-b-2 p-2
+                    <label for="contact_last_name">Last Name</label>
+                    <input type="text" name="contact_last_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
@@ -136,16 +136,16 @@
                 </div>
 
                 <div class="flex flex-col gap-1 w-[90%]">
-                    <label for="phone">Phone</label>
-                    <input type="text" name="phone" class="border-b-2 p-2
+                    <label for="contact_phone">Phone</label>
+                    <input type="text" name="contact_phone" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
                 </div>
             </div>
 
             <div class="flex flex-col gap-1 w-full">
-                <label for="message">Message</label>
-                <textarea name="message" class="border-b-2 p-2
+                <label for="contact_message">Message</label>
+                <textarea name="contact_message" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" ></textarea>
             </div>
