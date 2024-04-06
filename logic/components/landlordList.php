@@ -16,10 +16,13 @@ require "app/database.php"
 <div class="w-full rounded-lg bg-white flex flex-col">
 
     <div class="border rounded-xl p-4 w-full ">
-        <table class="w-full text-sm text-left mx-auto
-            text-gray-500 dark:text-gray-400 table-fixed">
+    <div class="w-full flex justify-end">
+                    <button class="my-2 h-10 flex items-center gap-2 px-4 bg-red-400 text-white  rounded-lg"
+                            id="printPdfBtn"
+                            type="button" name="fetch">
+                        <span>Print Pdf</span>
+                    </button>
 
-            <div class="w-full flex justify-end">
                 <form method="post" action="#" class="w-fit">
                     <!--            <input type="submit" name="fetch"-->
                     <!--                   class="my-2 h-10 w-[16] px-10 bg-[#3E2093] text-white  rounded-lg"-->
@@ -35,9 +38,13 @@ require "app/database.php"
                     </button>
                 </form>
             </div>
+        <table class="w-full text-sm text-left mx-auto
+            text-gray-500 dark:text-gray-400 table-fixed pdf">
+
+            
 
             <thead class="text-xs text-gray-700 uppercase h-12
-                    bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    bg-gray-50 dark:bg-gray-700 dark:text-gray-400 pdf">
             <tr>
                 <th scope="col" class="px-6 py-3">First Name</th>
                 <th scope="col" class="px-6 py-3">Last Name</th>
@@ -110,6 +117,15 @@ require "app/database.php"
     </div>
 
 </div>
-
+<script>
+    document.getElementById('printPdfBtn').addEventListener('click', function () {
+        var pdf = new jsPDF();
+        pdf.html(document.querySelector('.pdf'), {
+            callback: function (pdf) {
+                pdf.save('report.pdf');
+            }
+        });
+    });
+</script>
 </body>
 </html>

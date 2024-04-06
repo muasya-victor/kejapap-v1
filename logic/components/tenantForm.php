@@ -72,6 +72,13 @@
 
 
 </form>
-
+document.getElementById('printPdfBtn').addEventListener('click', function () {
+        var pdf = new jsPDF();
+        pdf.html(document.querySelector('.pdf'), {
+            callback: function (pdf) {
+                pdf.save('report.pdf');
+            }
+        });
+    });
 </body>
 </html>
