@@ -6,14 +6,14 @@
 $connection = $GLOBALS['connection'];
 
 if(isset($_POST['submit'])){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    $fname = $_POST['tenant_first_name'];
+    $lname = $_POST['tenant_last_name'];
     $user_type = 'tenant';
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $username = $_POST['username'];
+    $email = $_POST['tenant_email'];
+    $password = $_POST['tenant_password'];
+    $username = $_POST['tenant_username'];
 
-    $query = "INSERT INTO user(fname,lname,email,user_type, password, username)";
+    $query = "INSERT INTO user(tenant_first_name,tenant_last_name,tenant_email,user_type, tenant_password, tenant_username)";
     $query .= "VALUES('{$fname}', '{$lname}', '{$email}', '{$user_type}', '{$password}', '{$username}')";
     //    $conn = $GLOBALS['connection'];
     $create_post_query = mysqli_query($connection, $query);

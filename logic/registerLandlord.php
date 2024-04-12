@@ -6,14 +6,14 @@ require "./app/database.php";
 $connection = $GLOBALS['connection'];
 
 if(isset($_POST['submit'])){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    $fname = $_POST['user_first_name'];
+    $lname = $_POST['user_last_name'];
     $user_type = 'landlord';
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $_POST['user_email'];
+    $password = $_POST['user_password'];
     $username = $_POST['username'];
 
-    $query = "INSERT INTO user(fname,lname,email,user_type, password, username)";
+    $query = "INSERT INTO user(user_first_name,user_last_name,email,user_email, user_password, username)";
     $query .= "VALUES('{$fname}', '{$lname}', '{$email}', '{$user_type}', '{$password}', '{$username}')";
 //    $conn = $GLOBALS['connection'];
     $create_post_query = mysqli_query($connection, $query);

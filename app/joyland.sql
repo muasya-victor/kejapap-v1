@@ -56,23 +56,13 @@ INSERT INTO `feedback` (`feedback_id`, `feedback_first_name`, `feedback_last_nam
 --
 
 CREATE TABLE IF NOT EXISTS `landlord` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`))
+  `landlord_id` int(11) NOT NULL,
+  `landlord_first_name` varchar(50) NOT NULL,
+  `landlord_last_name` varchar(50) NOT NULL,
+  `landlord_email` varchar(50) NOT NULL,
+  `landlord_properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `landlord`
---
-
-INSERT INTO `landlord` (`id`, `fname`, `lname`, `email`, `properties`) VALUES
-(1, 'Victor', 'Muasya', 'vicmwe184@gmail.com', NULL),
-(2, 'Jennings', 'Mwendwa', 'jennings@gmail.com', NULL),
-(3, 'Old ', 'Trafford', 'old@gmail.com', NULL),
-(4, 'Kevin', 'Heart', 'kevin.com', NULL),
-(5, 'Joseph', 'Muasya', 'joseph@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,36 +93,6 @@ INSERT INTO `property` (`property_id`, `property_house_type`, `property_price`, 
 (43, 'single_room', 4000, '\r\n            behind the school', 'Screenshot (1).png', 0);
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `tenants`
---
-
-CREATE TABLE IF NOT EXISTS `tenants` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tenants`
---
-
-INSERT INTO `tenants` (`id`, `fname`, `lname`, `email`) VALUES
-(1, 'victor', 'muasya', 'vicmwe184@gmail.com'),
-(2, 'mwendwa', 'muasya', 'victormuasya@gmail.com'),
-(3, 'Victor', 'Muasya', 'vicmwe184@gmail.com'),
-(4, 'Victor', 'Muasya', 'vicmwe184@gmail.com'),
-(5, 'Victor', 'Muasya', 'vicmwe184@gmail.com'),
-(6, 'Victor 1', 'Muasya', 'vicmwe184@gmail.com'),
-(7, 'Victor 1', 'Muasya', 'vicmwe184@gmail.com'),
-(8, 'Danny', 'Kioko', 'vicmwe184@gmail.com'),
-(9, 'Danny', 'Kioko', 'vicmwe184@gmail.com'),
-(10, 'Danny', 'Kioko', 'vicmwe184@gmail.com'),
-(11, 'Danny', 'Kioko', 'vicmwe184@gmail.com'),
-(12, 'Danny', 'Kioko', 'vicmwe184@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -140,28 +100,71 @@ INSERT INTO `tenants` (`id`, `fname`, `lname`, `email`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_first_name` varchar(50) NOT NULL,
+  `user_last_name` varchar(50) NOT NULL,
   `user_type` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL
+  `user_email` varchar(50) NOT NULL,
+  `user_password` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `user`
---
+CREATE TABLE IF NOT EXISTS `tenants` (
+  `tenant_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `tenant_first_name` varchar(50) NOT NULL,
+  `tenant_last_name` varchar(50) NOT NULL,
+  `tenant_email` varchar(50) NOT NULL,
+  PRIMARY KEY (`tenant_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `user` (`id`, `fname`, `lname`, `user_type`, `email`, `password`, `username`) VALUES
-(14, 'Victor', 'Muasya', 'landlord', 'vicmwe184@gmail.com', '123456', 'tron'),
-(15, 'admin', 'profile', 'admin', 'admin@gmail.com', '123456', 'admin'),
-(16, 'Vijimmy', 'Muasya', 'tenant', 'jim@gmail.com', '1234', 'tenat001'),
-(17, 'mark', 'kim', 'landlord', 'markkim@gmail.com', '1234', 'maki');
 
---
--- Indexes for dumped tables
---
+
+CREATE TABLE IF NOT EXISTS `landlord` (
+  `landlord_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `landlord_first_name` varchar(50) NOT NULL,
+  `landlord_last_name` varchar(50) NOT NULL,
+  `landlord_email` varchar(50) NOT NULL,
+  `landlord_properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`)),
+  PRIMARY KEY (`landlord_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+DELIMITER //
+
+CREATE TRIGGER after_user_insert
+AFTER INSERT ON `user`
+FOR EACH ROW
+BEGIN
+    -- Check if the inserted user is of type 'tenant'
+    IF NEW.user_type = 'tenant' THEN
+        -- Insert a corresponding record into the tenants table
+        INSERT INTO tenants (user_id, tenant_first_name, tenant_last_name, tenant_email)
+        VALUES (NEW.user_id, NEW.user_first_name, NEW.user_last_name, NEW.user_email);
+    
+    -- Check if the inserted user is of type 'landlord'
+    ELSEIF NEW.user_type = 'landlord' THEN
+        -- Insert a corresponding record into the landlord table
+        INSERT INTO landlord (user_id, landlord_first_name, landlord_last_name, landlord_email)
+        VALUES (NEW.user_id, NEW.user_first_name, NEW.user_last_name, NEW.user_email);
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+INSERT INTO `user` (`user_first_name`, `user_last_name`, `user_type`, `user_email`, `user_password`, `username`) VALUES
+('Victor', 'Muasya', 'landlord', 'vicmwe184@gmail.com', '123456', 'tron'),
+('admin', 'profile', 'admin', 'admin@gmail.com', '123456', 'admin'),
+('Vijimmy', 'Muasya', 'tenant', 'jim@gmail.com', '1234', 'tenant001'),
+('mark', 'kim', 'landlord', 'markkim@gmail.com', '1234', 'maki'),
+('Dave', 'Were', 'tenant', 'dev@gmail.com', '1234', 'dave');
+
 
 --
 -- Indexes for table `feedback`
@@ -191,8 +194,8 @@ ALTER TABLE `tenants`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_email` (`user_email`),
   ADD UNIQUE KEY `username` (`username`);
 
 --

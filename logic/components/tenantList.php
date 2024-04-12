@@ -74,9 +74,9 @@
                     }else {
 
                         while ($row=mysqli_fetch_array($search_query)){
-                            $fname = $row['fname'];
-                            $lname = $row['lname'];
-                            $email = $row['email'];
+                            $fname = $row['tenant_first_name'];
+                            $lname = $row['tenant_last_name'];
+                            $email = $row['tenant_email'];
 
                             echo "
                             <tbody class='w-11/12'>
@@ -115,6 +115,7 @@
         </div>
 
     </div>
+    
     <script>
         document.getElementById('printPdfBtn').addEventListener('click', function () {
             var pdf = new jsPDF();
