@@ -1,36 +1,12 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Oct 13, 2023 at 07:26 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
-
+CREATE DATABASE joyland;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `joyland`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `feedback`
---
-
 USE joyland;
 
 CREATE TABLE IF NOT EXISTS `feedback` (
-  `feedback_id` int(11) NOT NULL DEFAULT 1,
+  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
   `feedback_first_name` varchar(50) NOT NULL,
   `feedback_last_name` varchar(50) NOT NULL,
   `feedback_email` varchar(50) NOT NULL,
@@ -50,19 +26,6 @@ INSERT INTO `feedback` (`feedback_id`, `feedback_first_name`, `feedback_last_nam
 (5, 'Victor', 'Muasya', 'vicmwe184@gmail.com', '0795083960', 'test 3');
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `landlord`
---
-
-CREATE TABLE IF NOT EXISTS `landlord` (
-  `landlord_id` int(11) NOT NULL,
-  `landlord_first_name` varchar(50) NOT NULL,
-  `landlord_last_name` varchar(50) NOT NULL,
-  `landlord_email` varchar(50) NOT NULL,
-  `landlord_properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 -- --------------------------------------------------------
 
@@ -100,39 +63,36 @@ INSERT INTO `property` (`property_id`, `property_house_type`, `property_price`, 
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `user_first_name` varchar(50) NOT NULL,
   `user_last_name` varchar(50) NOT NULL,
   `user_type` varchar(50) NOT NULL,
   `user_email` varchar(50) NOT NULL,
   `user_password` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  PRIMARY KEY (`user_id`)
+  `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `tenants` (
-  `tenant_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+
+CREATE TABLE IF NOT EXISTS  `tenants` (
+  `tenant_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int(11) NULL,
   `tenant_first_name` varchar(50) NOT NULL,
   `tenant_last_name` varchar(50) NOT NULL,
   `tenant_email` varchar(50) NOT NULL,
-  PRIMARY KEY (`tenant_id`),
   FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
 CREATE TABLE IF NOT EXISTS `landlord` (
-  `landlord_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `landlord_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int NULL,
   `landlord_first_name` varchar(50) NOT NULL,
   `landlord_last_name` varchar(50) NOT NULL,
   `landlord_email` varchar(50) NOT NULL,
-  `landlord_properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`)),
-  PRIMARY KEY (`landlord_id`),
+  `landlord_properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 DELIMITER //
 
@@ -149,8 +109,8 @@ BEGIN
     -- Check if the inserted user is of type 'landlord'
     ELSEIF NEW.user_type = 'landlord' THEN
         -- Insert a corresponding record into the landlord table
-        INSERT INTO landlord (user_id, landlord_first_name, landlord_last_name, landlord_email)
-        VALUES (NEW.user_id, NEW.user_first_name, NEW.user_last_name, NEW.user_email);
+        INSERT INTO landlord ( landlord_first_name, landlord_last_name, landlord_email)
+        VALUES ( NEW.user_first_name, NEW.user_last_name, NEW.user_email);
     END IF;
 END;
 //
@@ -165,74 +125,3 @@ INSERT INTO `user` (`user_first_name`, `user_last_name`, `user_type`, `user_emai
 ('mark', 'kim', 'landlord', 'markkim@gmail.com', '1234', 'maki'),
 ('Dave', 'Were', 'tenant', 'dev@gmail.com', '1234', 'dave');
 
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `landlord`
---
-ALTER TABLE `landlord`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `property`
---
-ALTER TABLE `property`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tenants`
---
-ALTER TABLE `tenants`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `user_email` (`user_email`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `landlord`
---
-ALTER TABLE `landlord`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `property`
---
-ALTER TABLE `property`
-  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- AUTO_INCREMENT for table `tenants`
---
-ALTER TABLE `tenants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

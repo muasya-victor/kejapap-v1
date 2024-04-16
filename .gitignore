@@ -7,3 +7,10 @@ vendor/
 .vscode/
 composer.lock
 composer.phar
+.env
+/env
+env/
+.env
+.env.local
+.env.development.local
+.env.test.local

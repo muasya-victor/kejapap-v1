@@ -56,7 +56,7 @@
                 $connection = $GLOBALS['connection'];
 
                 if(isset($_POST['fetch'])){
-                    $query = "SELECT * FROM user where user_type='tenant'";
+                    $query = "SELECT * FROM tenants";
                     $search_query = mysqli_query($connection, $query);
 
                     if(!$search_query){

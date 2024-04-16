@@ -40,9 +40,12 @@
             <a href="contact.php"
                     class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
                     cursor-pointer">Feed Back</a>
-            <a href="logic/components/tenantpdf.php"
+            <a href="tenantpdf.php"
                     class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
-                    cursor-pointer">download report</a>
+                    cursor-pointer">tenant report</a>
+            <a href="landlordpdf.php"
+                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
+                    cursor-pointer">landlord report</a>
 
             <?php
 

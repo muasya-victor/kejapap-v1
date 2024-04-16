@@ -19,7 +19,7 @@ ob_start();
 $connection = mysqli_connect($ip, $user, $password, $database);
 
 if($connection) {
-   echo "";
+   echo " ";
 }else {
     echo "error during connection";
 }
