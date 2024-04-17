@@ -5,6 +5,7 @@ require "app/database.php";
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $password_hash = hash('sha256', $password . 'max');
 
     // Prevent SQL injection using prepared statements
     $con = $GLOBALS['connection'];
@@ -13,7 +14,7 @@ if (isset($_POST['submit'])) {
     // Prepare the SQL statement
     if ($stmt = mysqli_prepare($con, $sql)) {
         // Bind parameters
-        mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+        mysqli_stmt_bind_param($stmt, "ss", $username, $password_hash);
         
         // Execute the statement
         mysqli_stmt_execute($stmt);
