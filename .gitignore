@@ -14,3 +14,14 @@ env/
 .env.local
 .env.development.local
 .env.test.local
+
+#tcpdf folder
+tcpdf
+/node_modules
+/tcpdf
+
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
