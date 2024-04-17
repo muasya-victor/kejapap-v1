@@ -35,8 +35,8 @@
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="propoerty_price">Price In KSH</label>
-            <input type="number" name="property_house_type" class="border-b-2 p-2
+            <label for="property_price">Price In KSH</label>
+            <input type="number" name="property_price" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
@@ -49,8 +49,8 @@
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="propety_location">Location Description</label>
-            <textarea name="propety_location" class="border-b-2 py-2
+            <label for="property_location">Location Description</label>
+            <textarea name="property_location" class="border-b-2 py-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
 

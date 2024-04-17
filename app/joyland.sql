@@ -34,7 +34,7 @@ INSERT INTO `feedback` (`feedback_id`, `feedback_first_name`, `feedback_last_nam
 --
 
 CREATE TABLE IF NOT EXISTS `property` (
-  `property_id` int(11) NOT NULL,
+  `property_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `property_house_type` varchar(50) NOT NULL,
   `property_price` int(11) NOT NULL,
   `property_location` varchar(255) NOT NULL,

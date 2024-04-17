@@ -6,13 +6,13 @@ require "./app/database.php";
 $connection = $GLOBALS['connection'];
 
 if(isset($_POST['submit'])){
-    $house_type = $_POST['house_type'];
-    $price = $_POST['price'];
-    $location = $_POST['location'];
-    $avatar = $_POST['avatar'];
-    $rented = false;
+    $house_type = $_POST['property_house_type'];
+    $price = $_POST['property_price'];
+    $location = $_POST['property_location'];
+    $avatar = $_POST['property_avatar'];
+    $rented = 0;
 
-    $query = "INSERT INTO property(house_type,price,location,avatar,rented)";
+    $query = "INSERT INTO property(property_house_type,property_price,property_location,property_avatar,property_rented)";
     $query .= "VALUES('{$house_type}', $price, '{$location}', '{$avatar}','{$rented}')";
 
     //$conn = $GLOBALS['connection'];
