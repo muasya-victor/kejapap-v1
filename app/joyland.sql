@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_last_name` varchar(50) NOT NULL,
   `user_type` varchar(50) NOT NULL,
   `user_email` varchar(50) NOT NULL,
-  `user_password` varchar(50) NOT NULL,
+  `user_password` varchar(1000) NOT NULL,
   `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
