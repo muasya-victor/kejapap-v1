@@ -1,5 +1,22 @@
 <?php
 require "app/database.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['property_id'])) {
+    $propertyId = $_POST['property_id'];
+
+    // Update the property_rented status in the database
+    $con = $GLOBALS['connection'];
+    $updateQuery = "UPDATE property SET property_rented = '1' WHERE property_id = ?";
+    
+    if ($stmt = mysqli_prepare($con, $updateQuery)) {
+        mysqli_stmt_bind_param($stmt, "i", $propertyId);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        echo "Property rented successfully!";
+    } else {
+        echo "Error updating property rented status!";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +65,8 @@ require "app/database.php";
                     $price = $row['property_price'];
                     $location = $row['property_location'];
                     $avatar = $row['property_avatar'];
-                    $property_id = 2;
-                
+                    $property_id = $row['property_id']; // Use the actual property ID
+
                     echo '<div class="flex flex-col gap-2 rounded-lg border border-gray-300 w-[270px]">
                                 <img src="projectMedia/' . $avatar . '" class="rounded-t-lg h-[150px]">
                                 <div class="flex flex-col gap-2 p-2">
@@ -73,53 +90,31 @@ require "app/database.php";
                 
                 <script>
                     function updatePropertyRented(propertyId) {
-                        // Send an asynchronous request to update_property_rented.php
+                        // Send an asynchronous request to update rented status
                         var xhr = new XMLHttpRequest();
-                        xhr.onreadystatechange = function () {
-                            if (xhr.readyState === XMLHttpRequest.DONE) {
-                                if (xhr.status === 200) {
-                                    // Update the UI or perform any necessary actions
-                                    alert(xhr.responseText); // Display a message or handle the response
-                                } else {
-                                    // Handle errors
-                                    alert('Error: ' + xhr.status);
+                        xhr.open('POST', window.location.href, true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.onload = function() {
+                            if (xhr.status === 200) {
+                                // Update the UI or handle response as needed
+                                alert(xhr.responseText); // Display a message or handle the response
+                                // Optional: Update button text or style after successful update
+                                var button = document.querySelector('[data-property-id="' + propertyId + '"]');
+                                if (button) {
+                                    button.disabled = true;
+                                    button.textContent = 'Rented';
                                 }
+                            } else {
+                                console.error('Request failed:', xhr.status, xhr.statusText);
                             }
                         };
-                        xhr.open('POST', 'update_property_rented.php', true);
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                         xhr.send('property_id=' + propertyId);
+                        window.location.reload()
                     }
                 </script>
         </div>
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const rentButtons = document.querySelectorAll('.rent-btn');
-
-        rentButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const propertyId = this.getAttribute('data-property-id');
-
-                // Send an AJAX request to update rented status
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'logic/update_rented.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        // Update the UI or handle response as needed
-                        button.disabled = true;
-                        button.textContent = 'Rented';
-                    } else {
-                        console.error('Request failed:', xhr.status, xhr.statusText);
-                    }
-                };
-                xhr.send('property_id=' + propertyId);
-            });
-        });
-    });
-</script>
 </body>
 </html>
