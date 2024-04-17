@@ -16,12 +16,10 @@
     <div class="w-full rounded-lg bg-white flex flex-col">
 
         <div class="border rounded-xl p-4 w-full ">
-        <div class="w-full flex justify-end">
-                    <button class="my-2 h-10 flex items-center gap-2 px-4 bg-red-400 text-white  rounded-lg"
-                            id="printPdfBtn"
-                            type="button" name="fetch">
-                        <span>Print Pdf</span>
-                    </button>
+        <div class="w-full flex justify-end items-center">
+            <a href="tenantpdf.php"
+                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
+                    cursor-pointer bg-red-400 mr-2 rounded-md flex items-center h-10 px-4 text-white">Print Pdf</a>
 
                     <form method="post" action="#" class="w-fit">
                         <!--            <input type="submit" name="fetch"-->

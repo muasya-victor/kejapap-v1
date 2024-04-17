@@ -30,11 +30,11 @@ if (isset($_POST['delete'])) {
 <div class="w-full rounded-lg bg-white flex flex-col">
 
     <div class="border rounded-xl p-4 w-full ">
-        <div class="w-full flex justify-end gap-4">
-            <form id="pdfForm" method="post" action="#"
-                  class="my-2 h-10 flex items-center gap-2 px-4 bg-red-400 text-white  rounded-lg cursor-pointer">
-                <input type="submit" name="tableData" id="printPdfBtn" value="Print Pdf">
-            </form>
+        <div class="w-full flex justify-end gap-4 items-center">
+        <a href="landlordpdf.php"
+                    class="font-semibold text-gray-700 hover:text-[#3E2093] hover:font-bold
+                    cursor-pointer bg-red-400 mr-2 rounded-md flex items-center h-10 px-4 text-white"
+                    >landlord report</a>
 
             <form method="post" action="#" class="w-fit">
                 <button class="my-2 h-10 flex items-center gap-2 px-4 bg-[#3E2093] text-white  rounded-lg"

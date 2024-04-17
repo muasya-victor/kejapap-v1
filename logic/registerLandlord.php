@@ -14,7 +14,8 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
 
     // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $salt = 'max';
+    $hashed_password = hash('sha256', $password . $salt);
 
     $query = "INSERT INTO user (user_first_name, user_last_name, user_type, user_email, user_password, username)";
     $query .= "VALUES ('{$fname}', '{$lname}', '{$user_type}', '{$email}', '{$hashed_password}', '{$username}')";

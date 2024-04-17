@@ -63,7 +63,7 @@ INSERT INTO `property` (`property_id`, `property_house_type`, `property_price`, 
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int(200) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `user_first_name` varchar(50) NOT NULL,
   `user_last_name` varchar(50) NOT NULL,
   `user_type` varchar(50) NOT NULL,
@@ -119,9 +119,9 @@ DELIMITER ;
 
 
 INSERT INTO `user` (`user_first_name`, `user_last_name`, `user_type`, `user_email`, `user_password`, `username`) VALUES
-('Victor', 'Muasya', 'landlord', 'vicmwe184@gmail.com', '123456', 'tron'),
-('admin', 'profile', 'admin', 'admin@gmail.com', '123456', 'admin'),
-('Vijimmy', 'Muasya', 'tenant', 'jim@gmail.com', '1234', 'tenant001'),
-('mark', 'kim', 'landlord', 'markkim@gmail.com', '1234', 'maki'),
-('Dave', 'Were', 'tenant', 'dev@gmail.com', '1234', 'dave');
+('Victor', 'Muasya', 'landlord', 'vicmwe184@gmail.com', SHA2(CONCAT('123456', 'max'), 256), 'tron'),
+('admin', 'profile', 'admin', 'admin@gmail.com', SHA2(CONCAT('123456', 'max'), 256), 'admin'),
+('Vijimmy', 'Muasya', 'tenant', 'jim@gmail.com',SHA2(CONCAT('123456', 'max'), 256) , 'tenant001'),
+('mark', 'kim', 'landlord', 'markkim@gmail.com', SHA2(CONCAT('123456', 'max'), 256), 'maki'),
+('Dave', 'Were', 'tenant', 'dev@gmail.com', SHA2(CONCAT('123456', 'max'), 256), 'dave');
 

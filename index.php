@@ -49,7 +49,7 @@ require "app/database.php";
                     $location = $row['property_location'];
                     $avatar = $row['property_avatar'];
                     $property_id = 2;
-
+                
                     echo '<div class="flex flex-col gap-2 rounded-lg border border-gray-300 w-[270px]">
                                 <img src="projectMedia/' . $avatar . '" class="rounded-t-lg h-[150px]">
                                 <div class="flex flex-col gap-2 p-2">
@@ -61,14 +61,36 @@ require "app/database.php";
                                         data-property-id="' . $property_id . '"
                                         class="rent-btn h-10 w-full mt-4  flex rounded-lg
                                         border border-[#3E2093] hover:bg-blue-100
-                                        items-center gap-2 justify-center">
+                                        items-center gap-2 justify-center"
+                                        onclick="updatePropertyRented(' . $property_id . ');">
                                         Rent
                                     </button>
                                 </div>
                             </div>';
                 }
             }
-            ?>
+                ?>
+                
+                <script>
+                    function updatePropertyRented(propertyId) {
+                        // Send an asynchronous request to update_property_rented.php
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === XMLHttpRequest.DONE) {
+                                if (xhr.status === 200) {
+                                    // Update the UI or perform any necessary actions
+                                    alert(xhr.responseText); // Display a message or handle the response
+                                } else {
+                                    // Handle errors
+                                    alert('Error: ' + xhr.status);
+                                }
+                            }
+                        };
+                        xhr.open('POST', 'update_property_rented.php', true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send('property_id=' + propertyId);
+                    }
+                </script>
         </div>
     </div>
 </div>

@@ -13,8 +13,12 @@ if(isset($_POST['submit'])){
     $password = $_POST['tenant_password'];
     $username = $_POST['tenant_username'];
 
+    $salt = 'max';
+    $hashed_password = hash('sha256', $password . $salt);
+
+
     $query = "INSERT INTO user(tenant_first_name,tenant_last_name,tenant_email,user_type, tenant_password, tenant_username)";
-    $query .= "VALUES('{$fname}', '{$lname}', '{$email}', '{$user_type}', '{$password}', '{$username}')";
+    $query .= "VALUES('{$fname}', '{$lname}', '{$email}', '{$user_type}', '{$hashed_password}', '{$username}')";
     //    $conn = $GLOBALS['connection'];
     $create_post_query = mysqli_query($connection, $query);
 
