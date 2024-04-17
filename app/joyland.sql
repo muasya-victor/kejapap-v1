@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `property` (
   `property_price` int(11) NOT NULL,
   `property_location` varchar(255) NOT NULL,
   `property_avatar` varchar(200) NOT NULL,
-  `property_rented` tinyint(1) NOT NULL DEFAULT 0
+  `property_rented` tinyint(1) NOT NULL DEFAULT 0,
+  `property_user_id` int(11) NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
