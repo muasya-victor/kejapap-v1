@@ -30,22 +30,22 @@
 
     <div class="grid md:grid-cols-1 gap-4 w-full  ">
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="fname">First Name</label>
-            <input type="text" name="fname" class="border-b-2 p-2
+            <label for="user_first_name">First Name</label>
+            <input type="text" name="user_first_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="lname">Last Name</label>
-            <input type="text" name="lname" class="border-b-2 p-2
+            <label for="user_last_name">Last Name</label>
+            <input type="text" name="user_last_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="mail">Mail</label>
-            <input type="email" name="email" class="border-b-2 p-2
+            <label for="user_email">Mail</label>
+            <input type="email" name="user_email" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
@@ -58,8 +58,8 @@
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="username">Password</label>
-            <input type="password" name="password" class="border-b-2 p-2
+            <label for="user_password">Password</label>
+            <input type="password" name="user_password" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>

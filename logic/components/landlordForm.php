@@ -37,8 +37,8 @@
         </div>
 
         <div class="flex flex-col gap-1 w-[90%]">
-            <label for="landord_last_name">Last Name</label>
-            <input type="text" name="landord_last_name" class="border-b-2 p-2
+            <label for="user_last_name">Last Name</label>
+            <input type="text" name="user_last_name" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>
@@ -66,7 +66,7 @@
 
         <div class="flex flex-col gap-1 w-[90%]">
             <label for="username">Password</label>
-            <input type="password" name="password" class="border-b-2 p-2
+            <input type="password" name="user_password" class="border-b-2 p-2
                 focus-none outline-none
                 text-gray-600 border-gray-400" >
         </div>

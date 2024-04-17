@@ -6,18 +6,18 @@
 $connection = $GLOBALS['connection'];
 
 if(isset($_POST['submit'])){
-    $fname = $_POST['tenant_first_name'];
-    $lname = $_POST['tenant_last_name'];
+    $fname = $_POST['user_first_name'];
+    $lname = $_POST['user_last_name'];
     $user_type = 'tenant';
-    $email = $_POST['tenant_email'];
-    $password = $_POST['tenant_password'];
-    $username = $_POST['tenant_username'];
+    $email = $_POST['user_email'];
+    $password = $_POST['user_password'];
+    $username = $_POST['username'];
 
     $salt = 'max';
     $hashed_password = hash('sha256', $password . $salt);
 
 
-    $query = "INSERT INTO user(tenant_first_name,tenant_last_name,tenant_email,user_type, tenant_password, tenant_username)";
+    $query = "INSERT INTO user(user_first_name,user_last_name,user_email,user_type, user_password, username)";
     $query .= "VALUES('{$fname}', '{$lname}', '{$email}', '{$user_type}', '{$hashed_password}', '{$username}')";
     //    $conn = $GLOBALS['connection'];
     $create_post_query = mysqli_query($connection, $query);
